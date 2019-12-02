@@ -13,7 +13,7 @@ mongoose.connect("mongodb+srv://mariem:mariem@cluster0-mvsmy.gcp.mongodb.net/tes
 		 
      //  the path of ocr image
       var params = {
-    input: './node_modules/ocr/samples/images/ocr.bmp'
+    input: './images/ocr.bmp'
      };
     
      // the function OCR extract the text from the image 
