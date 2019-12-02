@@ -20,7 +20,8 @@ mongoose.connect("mongodb+srv://mariem:mariem@cluster0-mvsmy.gcp.mongodb.net/tes
 	 
      ocr.recognize(params, function(err, document){
     if(err)
-        console.error(err);
+       
+	    console.log("There was a problem with the photo");
     else{        
         
         console.log(document.text); 
@@ -32,12 +33,20 @@ mongoose.connect("mongodb+srv://mariem:mariem@cluster0-mvsmy.gcp.mongodb.net/tes
     });
 		var Image_information = mongoose.model("Image_information", Schema);
 		
-		Image_information.create({
+		Image_information.find({ 'title':'ocr.bmp' }, function (err, docs) {
+       if (docs.length != 0)
+	   {
+		   console.log("The photo exist please try with an other photo");
+		   
+	   }
+   else{
+	   console.log(docs.length);
+	   	Image_information.create({
 		title:'ocr.bmp',	
         image_text: document.text
        }, function(error, data){
         if(error){
-			 console.log(error);
+			
             console.log("There was a problem adding this record to the database");
         }else{
             console.log("image text added to database");
@@ -45,6 +54,10 @@ mongoose.connect("mongodb+srv://mariem:mariem@cluster0-mvsmy.gcp.mongodb.net/tes
         }
 
     });
+   }
+});
+		
+	
 	
     }
 });
