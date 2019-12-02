@@ -14,5 +14,9 @@
     "node-tesseract": "^0.2.7",
     "ocr": "^4.0.23",
     "ocr-lang-eng": "^2.0.13"
-  }
+  },
+  "scripts": {
+    "start": "node app.js"
+    
+}
 }

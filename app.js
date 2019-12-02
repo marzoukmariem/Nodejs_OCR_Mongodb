@@ -27,11 +27,13 @@ mongoose.connect("mongodb+srv://mariem:mariem@cluster0-mvsmy.gcp.mongodb.net/tes
 		 // Insert the  text in the database 
 		
 		var Schema = new mongoose.Schema({
+	title: String,		
     image_text: String
     });
 		var Image_information = mongoose.model("Image_information", Schema);
 		
 		Image_information.create({
+		title:'ocr.bmp',	
         image_text: document.text
        }, function(error, data){
         if(error){
